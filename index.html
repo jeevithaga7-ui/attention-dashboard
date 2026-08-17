@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartChair Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🪑 <span>SmartChair</span>
+        </div>
+
+        <nav>
+
+            <button class="nav-btn active"
+                    onclick="showPage('dashboard', this)">
+                📊 Dashboard
+            </button>
+
+            <button class="nav-btn"
+                    onclick="showPage('posture', this)">
+                🧍 Posture
+            </button>
+
+            <button class="nav-btn"
+                    onclick="showPage('focus', this)">
+                🎯 Focus
+            </button>
+
+            <button class="nav-btn"
+                    onclick="showPage('analytics', this)">
+                📈 Analytics
+            </button>
+
+            <button class="nav-btn"
+                    onclick="showPage('settings', this)">
+                ⚙️ Settings
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome to your SmartChair dashboard.</p>
+                </div>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-icon">🪑</div>
+                    <div>
+                        <h3>Today's Sitting</h3>
+                        <strong id="todaySitting">0h 0m</strong>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <div>
+                        <h3>Good Posture</h3>
+                        <strong id="todayGood">0m</strong>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-icon">⚠️</div>
+                    <div>
+                        <h3>Slouch</h3>
+                        <strong id="todaySlouch">0m</strong>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <div>
+                        <h3>Focus Distraction</h3>
+                        <strong id="todayFocus">0m</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- DAILY GRAPH -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <div>
+                        <h2>Daily Sitting Time</h2>
+                        <p>Track your sitting duration throughout the week.</p>
+                    </div>
+
+                </div>
+
+                <div class="bar-chart" id="sittingChart">
+
+                    <!-- JavaScript creates bars here -->
+
+                </div>
+
+            </div>
+
+
+            <!-- POSTURE TIMINGS -->
+
+            <div class="panel">
+
+                <h2>Today's Activity</h2>
+
+                <div class="activity-grid">
+
+                    <div class="activity good">
+                        <span>✓</span>
+
+                        <div>
+                            <h3>Good Posture</h3>
+                            <p id="goodPostureTime">0 minutes</p>
+                        </div>
+                    </div>
+
+
+                    <div class="activity slouch">
+                        <span>!</span>
+
+                        <div>
+                            <h3>Slouch</h3>
+                            <p id="slouchTime">0 minutes</p>
+                        </div>
+                    </div>
+
+
+                    <div class="activity focus">
+                        <span>🎯</span>
+
+                        <div>
+                            <h3>Focus Distraction</h3>
+                            <p id="focusTime">0 minutes</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= POSTURE ================= -->
+
+        <section id="posture" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Posture</h1>
+                    <p>Monitor your sitting posture.</p>
+                </div>
+
+            </div>
+
+
+            <div class="posture-display">
+
+                <div class="posture-circle">
+                    <span>✓</span>
+                </div>
+
+                <h2>Good Posture</h2>
+
+                <p>
+                    Your current sitting position is within
+                    the recommended posture range.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>Posture Timing</h2>
+
+                <div class="timing-row">
+
+                    <span>Good Posture</span>
+
+                    <strong id="postureGoodPage">
+                        0 minutes
+                    </strong>
+
+                </div>
+
+
+                <div class="timing-row">
+
+                    <span>Slouch</span>
+
+                    <strong id="postureSlouchPage">
+                        0 minutes
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOCUS ================= -->
+
+        <section id="focus" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Focus</h1>
+                    <p>Monitor focus and distraction.</p>
+                </div>
+
+            </div>
+
+
+            <div class="focus-card">
+
+                <div class="focus-icon">
+                    🎯
+                </div>
+
+                <h2>Focus Monitoring</h2>
+
+                <p>
+                    Your SmartChair can track periods of
+                    distraction during a sitting session.
+                </p>
+
+                <div class="focus-time">
+
+                    <span>Today's distraction time</span>
+
+                    <strong id="focusPageTime">
+                        0 minutes
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section id="analytics" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Analytics</h1>
+                    <p>View your SmartChair activity.</p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>Weekly Sitting Data</h2>
+
+                <div class="bar-chart large"
+                     id="analyticsChart">
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>Posture & Focus</h2>
+
+                <div class="analytics-list">
+
+                    <div>
+                        <span>Good Posture</span>
+                        <strong id="analyticsGood">
+                            0 minutes
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Slouch</span>
+                        <strong id="analyticsSlouch">
+                            0 minutes
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Focus Distraction</span>
+                        <strong id="analyticsFocus">
+                            0 minutes
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section id="settings" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>⚙️ Settings</h1>
+
+                    <p>
+                        Configure your SmartChair.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SITTING REMINDER -->
+
+            <div class="settings-card">
+
+                <div class="settings-heading">
+
+                    <h2>Sitting Reminder</h2>
+
+                    <p>
+                        Choose how long you want to sit before
+                        receiving a break reminder.
+                    </p>
+
+                </div>
+
+
+                <div class="setting-control">
+
+                    <label for="sittingLimit">
+                        Sitting Duration
+                    </label>
+
+
+                    <select id="sittingLimit">
+
+                        <option value="15">
+                            15 Minutes
+                        </option>
+
+                        <option value="30">
+                            30 Minutes
+                        </option>
+
+                        <option value="45" selected>
+                            45 Minutes
+                        </option>
+
+                        <option value="60">
+                            60 Minutes
+                        </option>
+
+                        <option value="90">
+                            90 Minutes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TIMER -->
+
+                <div class="timer-section">
+
+                    <div id="breakStatus"
+                         class="timer-status">
+
+                        ⚪ Sitting session not started
+
+                    </div>
+
+
+                    <div id="breakTimer"
+                         class="timer">
+
+                        00:00:00
+
+                    </div>
+
+
+                    <div class="progress-container">
+
+                        <div id="breakProgress"
+                             class="progress-bar">
+
+                        </div>
+
+                    </div>
+
+
+                    <p id="remainingTime"
+                       class="remaining">
+
+                        Select your sitting duration and
+                        start your session.
+
+                    </p>
+
+
+                    <div class="timer-buttons">
+
+                        <button class="primary-btn"
+                                onclick="startBreakTimer()">
+
+                            ▶ Start Sitting Session
+
+                        </button>
+
+
+                        <button class="secondary-btn"
+                                onclick="stopBreakTimer()">
+
+                            ⏹ Stop
+
+                        </button>
+
+
+                        <button class="secondary-btn"
+                                onclick="resetBreakTimer()">
+
+                            ↻ Reset
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTIFICATION -->
+
+            <div class="settings-card">
+
+                <div class="settings-heading">
+
+                    <h2>🔔 Notifications</h2>
+
+                    <p>
+                        Allow browser notifications for break reminders.
+                    </p>
+
+                </div>
+
+
+                <button class="notification-btn"
+                        onclick="requestNotificationPermission()">
+
+                    Enable Notifications
+
+                </button>
+
+                <p id="notificationStatus"
+                   class="small-text">
+
+                    Notifications are not enabled.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= BREAK ALERT ================= -->
+
+<div id="breakAlert" class="alert-overlay">
+
+    <div class="alert-box">
+
+        <div class="alert-icon">
+            🔔
+        </div>
+
+        <h2>Break Time!</h2>
+
+        <p>
+            You have reached your selected sitting duration.
+        </p>
+
+        <p>
+            Take a short break, stand up and relax.
+        </p>
+
+        <button class="primary-btn"
+                onclick="closeBreakAlert()">
+
+            ✓ I've Taken a Break
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
